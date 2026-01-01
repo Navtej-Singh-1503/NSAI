@@ -1,3 +1,17 @@
+'''
+CREATED BY Navtej-Singh-1053
+© 2025 Navtej Singh Saggar
+Educational use only
+
+01/01/2026
+
+Version - 0.3.1
+
+mail - navtejsingh15032011@gmail.com
+
+'''
+
+
 from google import genai
 import time
 import random
@@ -28,12 +42,17 @@ query = random.choice(wish)
 
 print(RED + intro + RESET)
 
+print(GREEN + "FOLLOW ON GITHUB -> https://github.com/Navtej-Singh-1503"+RESET)
+print(GREEN + "MAIL -> navtejsingh15032011@gmail.com" + RESET)
+
 print(GREEN + query + RESET)
 engine.say(query)
 engine.runAndWait()  
 
 # ---------- AI ----------
-client = genai.Client(api_key="AIzaSyBNafclc1OlNVYXuADRdJigkUUM6tOpMOQ")
+client = genai.Client(api_key="YOUR_GEMINI_API_KEY_HERE")
+
+
 MODEL_ID = "models/gemini-flash-latest"
 
 engine.say("AI Bot Initializing")
@@ -60,7 +79,7 @@ while True:
         print(PURPLE + "AI: " + ai_text + RESET)
 
         engine.say(ai_text)
-        engine.runAndWait()   # ✅ REQUIRED
+        engine.runAndWait() 
 
         time.sleep(1)
 
