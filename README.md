@@ -26,6 +26,11 @@ python3 intallation.py
 python3 ai.py
 
 ```
+---
+## **IMPORTANT**
+-REMEMBER TO REPLACE "YOUR_GEMINI_API_KEY_HERE" IN api.py OR ai.py WILL NOT WORK!!
+
+---
 Copyright © 2026 Navtej Singh Saggar
 
 All rights reserved.
