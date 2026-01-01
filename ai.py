@@ -10,7 +10,7 @@ Version - 0.3.1
 mail - navtejsingh15032011@gmail.com
 
 '''
-
+#This is the main script
 
 from google import genai
 import time
