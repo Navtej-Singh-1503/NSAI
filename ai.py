@@ -18,6 +18,7 @@ import random
 import pyttsx3
 from brand import intro
 import os
+from api import apikey
 
 RED = "\033[1;31m"
 GREEN = "\033[0;32m"
@@ -50,7 +51,7 @@ engine.say(query)
 engine.runAndWait()  
 
 # ---------- AI ----------
-client = genai.Client(api_key="YOUR_GEMINI_API_KEY_HERE")
+client = genai.Client(api_key=apikey)
 
 
 MODEL_ID = "models/gemini-flash-latest"
