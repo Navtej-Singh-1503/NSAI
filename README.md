@@ -15,7 +15,9 @@ This project is designed for **learning, educational use, and ICSE Computer Appl
 - 🧠 Model auto-selection support
 - 🛡️ API key validation (prevents runtime errors)
 - 🐧 Linux compatible
-
+- 🔑 Error explain feature
+- 🧠 Memory saving also after restart
+- 📥 Auto download with just a single cammand
 ---
 
 ## 🧰 Requirements
