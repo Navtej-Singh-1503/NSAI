@@ -10,7 +10,7 @@ print("Installation will be starting in 5 seconds ")
 time.sleep(5)
 
 os.system("sudo apt update")
-os.system("sudo apt install espeak espeak-ng ffmpeg libespeak1 alsa-utils -y")
+os.system("sudo apt install espeak espeak-ng ffmpeg libespeak1 alsa-utils espeak-ng-data -y")
 os.system("pip install pyttsx3 --break-system-packages")
 os.system("pip install google-generativeai --break-system-packages")
 os.system("pip install google-genai --break-system-packages")
