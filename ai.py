@@ -5,7 +5,7 @@ Educational use only
 
 01/01/2026
 
-Version - 0.3.1
+Version - 0.3.4
 
 mail - navtejsingh15032011@gmail.com
 
@@ -41,7 +41,9 @@ wish = [
 
 query = random.choice(wish)
 
-print(RED + intro + RESET)
+print(RED + "")
+intro()
+print(RESET + "")
 
 print(GREEN + "FOLLOW ON GITHUB -> https://github.com/Navtej-Singh-1503"+RESET)
 print(GREEN + "MAIL -> navtejsingh15032011@gmail.com" + RESET)
