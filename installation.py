@@ -17,8 +17,13 @@ os.system("pip install google-genai")
 
 print("DONE........... NOW NOW YOU CAN START RUNNING ai.py")
 print("Need Gemini API Key to run ai.py")
-print("If you don't have you can get it on ")
+print("If you don't have you can get it on https://aistudio.google.com/api-keys")
 key = input("Enter you Google gemini API Key>> ")
+
+with open("api.py", "w") as f:
+    f.write('api key = "'+user'")
+
+print("api.py file created successfully!")
 
 user = input("NEED MORE GITHUB TOOLS?    [Yes/No]")
 if user.lower() in ["yes", "y"]:
