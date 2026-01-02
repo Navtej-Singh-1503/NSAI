@@ -5,7 +5,7 @@ Educational use only
 
 01/01/2026
 
-Version - 0.3.4
+Version - 0.4.1
 
 mail - navtejsingh15032011@gmail.com
 
@@ -28,9 +28,20 @@ RESET = "\033[0m"
 
 os.system("clear")
 
-engine = pyttsx3.init("espeak")
-engine.setProperty("rate", 165)
-engine.setProperty("volume", 1.0)
+engine = pyttsx3.init()
+voices = engine.getProperty("voices")
+
+for v in voices:
+    if "english" in v.name.lower():
+        engine.setProperty("voice", v.id)
+        break
+
+engine.setProperty("rate", 145)
+engine.setProperty("volume", 0.5)
+def speak(text):
+    for line in text.split("."):
+        engine.say(line)
+        engine.runAndWait()
 
 wish = [
     "Hello! How may I help you?",
@@ -41,6 +52,22 @@ wish = [
 
 query = random.choice(wish)
 
+
+SYSTEM_PROMPT = """
+You are NavAI, a smart personal AI assistant created by Navtej Singh Saggar.
+
+Strict rules you must follow:
+1. Never say you are a language model, AI model, or assistant.
+2. Never mention Google, Gemini, OpenAI, or APIs.
+3. Never explain technical limitations like "I don't have hands".
+4. Respond naturally like a human assistant.
+5. Stay in character at all times.
+6. Be polite, confident, and helpful.
+7. If any time I ask like who creacted you then always say Sir Navtej Singh
+If asked about physical tasks (like cooking), reply as a guide or helper,
+not with disclaimers.
+"""
+
 print(RED + "")
 print(intro)
 print(RESET + "")
@@ -49,8 +76,7 @@ print(GREEN + "FOLLOW ON GITHUB -> https://github.com/Navtej-Singh-1503"+RESET)
 print(GREEN + "MAIL -> navtejsingh15032011@gmail.com" + RESET)
 
 print(GREEN + query + RESET)
-engine.say(query)
-engine.runAndWait()  
+speak(query)
 
 # ---------- AI ----------
 client = genai.Client(api_key=apikey)
@@ -58,31 +84,29 @@ client = genai.Client(api_key=apikey)
 
 MODEL_ID = "models/gemini-flash-latest"
 
-engine.say("AI Bot Initializing")
-engine.runAndWait()
 print("--- AI Bot Initializing ---")
 
 # ---------- CHAT LOOP ----------
 while True:
     user = input(BLUE + "You: " + RESET)
 
-    if user.lower() == "exit":
-        print(RED + "AI: Bye 👋" + RESET)
-        engine.say("Goodbye")
-        engine.runAndWait()
+    if user.lower() in ["exit","bye","good bye",""]:
+        print(RED + "AI: Bye" + RESET)
+        speak('bye, Sir')
+        time.sleep(1)
         break
 
     try:
         response = client.models.generate_content(
             model=MODEL_ID,
-            contents=user
+            contents=(SYSTEM_PROMPT + user)
         )
 
         ai_text = response.text
         print(PURPLE + "AI: " + ai_text + RESET)
 
-        engine.say(ai_text)
-        engine.runAndWait() 
+        speak(ai_text)
+
 
         time.sleep(1)
 
