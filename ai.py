@@ -42,7 +42,7 @@ wish = [
 query = random.choice(wish)
 
 print(RED + "")
-intro()
+print(r + intro)
 print(RESET + "")
 
 print(GREEN + "FOLLOW ON GITHUB -> https://github.com/Navtej-Singh-1503"+RESET)
