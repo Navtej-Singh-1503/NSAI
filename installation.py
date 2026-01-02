@@ -1,3 +1,16 @@
+'''
+CREATED BY Navtej-Singh-1053
+© 2025 Navtej Singh Saggar
+Educational use only
+
+01/01/2026
+
+Version - 3.1.3
+
+mail - navtejsingh15032011@gmail.com
+
+'''
+
 from brand import intro
 import os
 import time
