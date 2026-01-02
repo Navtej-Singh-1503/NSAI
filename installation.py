@@ -13,7 +13,7 @@ os.system("sudo apt update")
 os.system("sudo apt install espeak espeak-ng ffmpeg libespeak1 alsa-utils -y")
 os.system("pip install pyttsx3 --break-system-packages")
 os.system("pip install google-generativeai --break-system-packages")
-os.system("pip install google-genai")
+os.system("pip install google-genai --break-system-packages")
 
 print("DONE........... NOW NOW YOU CAN START RUNNING ai.py")
 print("Need Gemini API Key to run ai.py")
