@@ -1,11 +1,11 @@
 '''
-CREATED BY Navtej-Singh-1053
+CREATED BY Navtej-Singh-1503
 © 2025 Navtej Singh Saggar
 Educational use only
 
 01/01/2026
 
-Version - 0.4.1
+Version - 0.5.3
 
 mail - navtejsingh15032011@gmail.com
 
@@ -19,6 +19,11 @@ import pyttsx3
 from brand import intro
 import os
 from api import apikey
+from DATA import SYSTEM_PROMPT
+import json
+import os
+
+MEMORY_FILE = "memory.json"
 
 RED = "\033[1;31m"
 GREEN = "\033[0;32m"
@@ -53,20 +58,27 @@ wish = [
 query = random.choice(wish)
 
 
-SYSTEM_PROMPT = """
-You are NavAI, a smart personal AI assistant created by Navtej Singh Saggar.
+def load_memory():
+    if os.path.exists(MEMORY_FILE):
+        with open(MEMORY_FILE, "r") as f:
+            return json.load(f)
+    return []
 
-Strict rules you must follow:
-1. Never say you are a language model, AI model, or assistant.
-2. Never mention Google, Gemini, OpenAI, or APIs.
-3. Never explain technical limitations like "I don't have hands".
-4. Respond naturally like a human assistant.
-5. Stay in character at all times.
-6. Be polite, confident, and helpful.
-7. If any time I ask like who creacted you then always say Sir Navtej Singh
-If asked about physical tasks (like cooking), reply as a guide or helper,
-not with disclaimers.
-"""
+def save_memory(data):
+    with open(MEMORY_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+chat_history = load_memory()
+
+if not chat_history:
+    chat_history = [
+        {
+            "role": "model",
+            "parts": [{"text": SYSTEM_PROMPT}]
+        }
+    ]
+
 
 print(RED + "")
 print(intro)
@@ -90,26 +102,64 @@ print("--- AI Bot Initializing ---")
 while True:
     user = input(BLUE + "You: " + RESET)
 
-    if user.lower() in ["exit","bye","good bye",""]:
-        print(RED + "AI: Bye" + RESET)
-        speak('bye, Sir')
-        time.sleep(1)
+    if user.lower() == "exit":
+        print(RED + "AI: Bye 👋" + RESET)
+        engine.say("Goodbye")
+        engine.runAndWait()
         break
+
+    chat_history.append({
+        "role": "user",
+        "parts": [{"text": user}]
+    })
 
     try:
         response = client.models.generate_content(
             model=MODEL_ID,
-            contents=(SYSTEM_PROMPT + user)
+            contents=chat_history
         )
 
-        ai_text = response.text
-        print(PURPLE + "AI: " + ai_text + RESET)
+        ai_text = response.text.strip()
 
+        chat_history.append({
+            "role": "model",
+            "parts": [{"text": ai_text}]
+        })
+        save_memory(chat_history)
+
+        print(PURPLE + "AI: " + ai_text + RESET)
         speak(ai_text)
 
-
-        time.sleep(1)
-
     except Exception as e:
-        print(RED + "[!] Error:" + RESET, e)
+        if "429" in str(e):
+            print("AI NEED SOME REST.")
+            print("TRY AGAIN AFTER 12:00am")
+            print("STAY UPDAPED IT WILL FIX SOON...")
 
+        elif "400" in str(e):
+            print("AI: Invalid request. Something in your message format is wrong.")
+            print("Check your system prompt or input.")
+
+        elif "401" in str(e):
+            print("AI: Authentication failed. API key is invalid or missing.")
+
+        elif "403" in str(e):
+            print("AI: Permission denied. Your plan may not allow this model.")
+
+        elif "404" in str(e):
+            print("AI: Requested model or resource not found. Check the model ID.")
+
+        elif "500" in str(e):
+            print("AI: Server error. The API's had a problem. Try again later.")
+
+        elif "502" or "503" in str(e):
+            print("AI: Server is temporarily unavailable. Please wait a few seconds and retry.")
+
+        elif "SSL" in e:
+            print("AI: Network/SSL problem. Check your internet, firewall, or VPN.")
+
+        elif "Erron" in e:
+            print("AI: Network error. Check your internet connection and DNS.")
+        else:
+
+            print(RED + "[!] Error:" + RESET, e)
