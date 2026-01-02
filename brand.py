@@ -1,4 +1,19 @@
-intro = ("""
+'''
+CREATED BY Navtej-Singh-1053
+© 2025 Navtej Singh Saggar
+Educational use only
+
+01/01/2026
+
+Version - 1.2.0
+
+mail - navtejsingh15032011@gmail.com
+
+'''
+
+
+
+intro = print(r"""
  _   _             _       _   _____ _             _
 | \ | |           | |     (_) /  ___(_)           | |
 |  \| | __ ___   _| |_ ___ _  \ `--. _ _ __   __ _| |__
