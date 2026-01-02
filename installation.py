@@ -21,7 +21,7 @@ print("If you don't have you can get it on https://aistudio.google.com/api-keys"
 key = input("Enter you Google gemini API Key>> ")
 
 with open("api.py", "w") as f:
-    f.write('api key = "'+user+'")
+    f.write('api key = "'+user+'"')
 
 print("api.py file created successfully!")
 
