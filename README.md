@@ -1,17 +1,17 @@
 # NSAI
-# 🤖 AI Voice Chatbot (Gemini + Python)
+# AI Voice Chatbot (Gemini + Python)
 
 A terminal-based AI chatbot built using **Google Gemini API** and **Python**, with **voice output** powered by `pyttsx3`.  
 This project is designed for **learning, educational use, and ICSE Computer Applications projects**.
 
 ---
 
-## ✨ Features
+##  Features
 
-- 💬 Text-based AI chat using Google Gemini
-- 🔊 Voice output (Text-to-Speech) using `pyttsx3`
-- 🎨 Colored terminal interface
-- 🔁 Random welcome messages
+-  Text-based AI chat using Google Gemini
+-  Voice output (Text-to-Speech) using `pyttsx3`
+-  Colored terminal interface
+- Random welcome messages
 - 🧠 Model auto-selection support
 - 🛡️ API key validation (prevents runtime errors)
 - 🐧 Linux compatible
@@ -33,6 +33,16 @@ python3 ai.py
 -REMEMBER TO HAVE YOUR OWN GEMINI API KEY OR ai.py WILL NOT WORK!!
 
 ---
+
+## Support My Work
+
+You can support me via cryptocurrency:
+
+- LTC : ltc1qspfztcvax7g9caqgdmp3ex6fytrr0dlssr0r45
+- URL : litecoin:LTC1QSPFZTCVAX7G9CAQGDMP3EX6FYTRR0DLSSR0R45
+
+---
+
 Copyright © 2026 Navtej Singh Saggar
 
 All rights reserved.
