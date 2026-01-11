@@ -11,24 +11,24 @@ This project is designed for **learning, educational use, and ICSE Computer Appl
 -  Text-based AI chat using Google Gemini
 -  Voice output (Text-to-Speech) using `pyttsx3`
 -  Colored terminal interface
-- Random welcome messages
-- 🧠 Model auto-selection support
-- 🛡️ API key validation (prevents runtime errors)
-- 🐧 Linux compatible
-- 🔑 Error explain feature
-- 🧠 Memory saving also after restart
-- 📥 Auto download with just a single cammand
+-  Random welcome messages
+-  Model auto-selection support
+-  API key validation (prevents runtime errors)
+-  Linux compatible
+-  Error explain feature
+-  Memory saving also after restart
+-  Auto download with just a single cammand
 ---
 
-## 🧰 Requirements
+##  Requirements
 
-### 🔹 System (Linux)
+###  System (Linux)
 ```bash
 python3 intallation.py
 python3 ai.py
 
 ```
----
+--- 
 ## **IMPORTANT**
 -REMEMBER TO HAVE YOUR OWN GEMINI API KEY OR ai.py WILL NOT WORK!!
 
