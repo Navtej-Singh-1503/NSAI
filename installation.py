@@ -29,11 +29,11 @@ time.sleep(5)
 
 os.system("sudo apt update")
 os.system("sudo apt install espeak espeak-ng ffmpeg libespeak1 alsa-utils espeak-ng-data -y")
-os.system("pip install pyttsx3 --break-system-packages")
-os.system("pip install google-generativeai --break-system-packages")
-os.system("pip install google-genai --break-system-packages")
+os.system("pip install pyttsx3")
+os.system("pip install google-generativeai ")
+os.system("pip install google-genai ")
 
-print(GREEN+"DONE........... NOW NOW YOU CAN START RUNNING ai.py")
+
 print("Need Gemini API Key to run ai.py")
 print("If you don't have you can get it on https://aistudio.google.com/api-keys")
 key = input("Enter you Google gemini API Key>> ")
@@ -42,6 +42,8 @@ with open("api.py", "w") as f:
     f.write('apikey = "'+key+'"')
 
 print("api.py file created successfully!"+RESET)
+print(GREEN+"DONE........... NOW YOU CAN START RUNNING ai.py"+RESET)
+
 
 user = input("NEED MORE GITHUB TOOLS?    [Yes/No]")
 if user.lower() in ["yes", "y"]:
